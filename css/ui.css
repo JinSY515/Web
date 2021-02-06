@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+#layout{ width:100%; height:100%; padding-left:180px;}
+
+/*layout*/
+#layout .logo{position:absolute; left:35px; top:35px;}
+#layout .logo img{width:100px;}
+#layout header{width:180px; height:100%; 
+    position:fixed; left:0px; top:0px;
+    background:rgba(247, 131, 194,0.6);
+    z-index:11;}
+#layout header #main{list-style-type:none; top:120px; position:absolute; left:70px;}
+#layout header #main a{text-decoration:none; color:rgb(247, 149, 149);line-height:30px;}
+
+/*container*/
+#container{width:100%; height:100%;}
+
+/*header*/
+#layout header nav{width:100%; height:100%;}
+#layout header nav ul{width:100%; height:100%; display:flex;
+    flex-direction:column; justify-content:center;}
+#layout header nav ul li{margin:0 0 20px 10px; list-style-type:none;}
+#layout header nav ul li a{font-size:24px; font-family:Lobster; color:white;
+    font-weight:500; text-decoration:none; line-height:20px;}
+#layout header nav ul li:hover a{color:red;}
+#layout header nav ul li.on a{color:red;}
+
+/*메인 화면*/
+#container h1{font-size:120px; font-family:Lobster; display:flex; justify-content:center;}
+#container{background:pink}
+/*footer*/
+footer{width:180px; position:fixed; left:0px; bottom:0px; padding: 0 20px 30px 10px;
+    font-size:10px; color:#7e6678; z-index:12;}
