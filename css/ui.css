@@ -11,6 +11,8 @@
 #layout header #main{list-style-type:none; top:120px; position:absolute; left:70px;}
 #layout header #main a{text-decoration:none; color:rgb(247, 149, 149);line-height:30px;}
 
+a { text-decoration:none !important; color:black }
+
 /*container*/
 #container{width:100%; height:100%;}
 
@@ -26,7 +28,67 @@
 
 /*메인 화면*/
 #container h1{font-size:120px; font-family:Lobster; display:flex; justify-content:center;}
-#container{background:pink}
+
+/*Calendar*/
+table{
+    margin-left:50px;
+    border:2px solid #7e7e7e;
+    border-collapse:collapse;
+}
+table td{
+    border:1px dotted #7e7e7e;
+
+    width:100px;
+    height:80px;
+    vertical-align:text-top;
+    padding:10px 0 0 10px;
+}
+table th{
+    width:100px;
+    vertical-align:top 10%;
+    font-family:Lobster;
+    font-size:40px;
+    border:1px solid #7e7e7e;
+}
+
+table th.Day{
+    height:40px;
+    text-align:center;
+}
+
+table th.Sunday, td.Sunday a{
+    color:#eb5461;
+}
+
+table th.Saturday, td.Saturday a{
+    color:rgb(59, 154, 243);
+}
+
+table .Week{
+    background:rgb(247, 149, 149);
+    width:40px;
+ 
+}
+table th.Week{
+    font-size:20px;
+}
+table td.Week{
+    text-align:left;
+    font-weight:500;
+}
+
+
+.controller{
+    font-size:30px;
+    margin-left:250px;
+    margin-bottom:30px;
+}
+.controller a{color:blueviolet;}
+.controller a:hover{color:rgb(255, 0, 179)}
+
+
+
+
 /*footer*/
 footer{width:180px; position:fixed; left:0px; bottom:0px; padding: 0 20px 30px 10px;
     font-size:10px; color:#7e6678; z-index:12;}
