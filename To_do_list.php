@@ -1,11 +1,10 @@
 <?php
     $year=isset($_GET['year'])? $_GET['year'] : date('Y');
-    $month=isset($_GET['month'])? $_GET['month']:date('m');
+    $month=isset($_GET['month'])? $_GET['month']:date('n');
     $date=isset($_GET['date'])? $_GET['date']:date('d'); 
     $today="$year-$month-$date";
     //년,월,일 변수 지정.
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -20,19 +19,20 @@
 <body>
     <section id="layout">
         <header>
-            <strong class="logo"><a href="To_do_list.php"><img src="images/diary.png"></a></strong>
-            <li id="main"><a href="To_do_list.php">Main</a></li>
+            <strong class="logo"><img src="images/diary.png"></strong>
             <nav>
                 <ul>
                     <li><a href="Annual.php">Annual</a></li>
-                    <li><a href="Monthly.php?year=<?php echo $year;?>&month=<?php echo $month;?>">Monthly</a></li>
-                    <li class="on"><a href="Weekly.php">Weekly</a></li>
-                    <li><a href="Daily.php">Daily</a></li>
+                 
+                    <li><a href="Monthly.php?year=<?php echo $year;?>&month=<?php echo sprintf("%02d",$month);?>">Monthly</a></li>
+                    <li><a href="Weekly.php">Weekly</a></li>
+                    <li><a href="Daily.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month);?>&date=<?php echo sprintf("%02d",$date)?>">Daily</a></li>
                     
                 </ul>
             </nav>
         </header>
         <section id="container">
+            <h1>My Diary</h1>
             
         </section>
 

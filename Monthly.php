@@ -31,7 +31,7 @@
                     <li><a href="Annual.php">Annual</a></li>
                     <li class="on"><a href="Monthly.php?year=<?php echo $year;?>&month=<?php echo $month;?>">Monthly</a></li>
                     <li><a href="Weekly.php">Weekly</a></li>
-                    <li><a href="Daily.php">Daily</a></li>
+                    <li><a href="Daily.php?year=<?php echo $year?>&month=<?php echo $month?>&date=<?php echo $date?>">Daily</a></li>
                     
                 </ul>
             </nav>

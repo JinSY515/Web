@@ -1,6 +1,6 @@
 <?php
     $year=isset($_GET['year'])? $_GET['year'] : date('Y');
-    $month=isset($_GET['month'])? $_GET['month']:date('m');
+    $month=isset($_GET['month'])? $_GET['month']:date('n');
     $date=isset($_GET['date'])? $_GET['date']:date('d'); 
     $today="$year-$month-$date";
     //년,월,일 변수 지정.
@@ -24,7 +24,7 @@
             <nav>
                 <ul>
                     <li class="on"><a href="Annual.php">Annual</a></li>
-                    <li><a href="Monthly.php?year=<?php echo $year;?>&month=<?php echo $month;?>">Monthly</a></li>
+                    <li><a href="Monthly.php?year=<?php echo $year;?>&month=<?php echo sprintf("%02d",$month);?>">Monthly</a></li>
                     <li><a href="Weekly.php">Weekly</a></li>
                     <li><a href="Daily.php">Daily</a></li>
                     
