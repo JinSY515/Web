@@ -2,7 +2,9 @@
     $year=isset($_GET['year'])? $_GET['year'] : date('Y');
     $month=isset($_GET['month'])? $_GET['month']:date('n');
     $date=isset($_GET['date'])? $_GET['date']:date('d'); 
+    $week=isset($_GET['week'])? $_GET['week']:date('W');
     $today="$year-$month-$date";
+    
     //년,월,일 변수 지정.
 ?>
 
@@ -32,8 +34,24 @@
                 </ul>
             </nav>
         </header>
-        <section id="container">
-            
+        <section id="container" class="container_week">
+            <h2><?php echo "$year 년 $month 월 $week 주"?></h2>
+            <div class="week_box">
+                <table id="week_diary">
+                   <tr>
+                       <th class="Sunday">S</th>
+                       <th class="Monday">M</th>
+                       <th class="Tuesday">T</th>
+                       <th class="Wednesday">W</th>
+                   </tr>
+                   <tr>
+                       <th class="Thursday">T</th>
+                       <th class="Friday">F</th>
+                       <th class="Saturday">S</th>
+                       <th></th>
+                   </tr> 
+                </table>
+            </div>
         </section>
 
         <footer>

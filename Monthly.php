@@ -1,6 +1,7 @@
 <?php
     $year=isset($_GET['year'])? $_GET['year'] : date('Y');
     $month=isset($_GET['month'])? $_GET['month']:date('m');
+    $week=isset($_GET['week'])? $_GET['week']:date('W');
     $date=isset($_GET['date'])? $_GET['date']:date('d'); 
     $today="$year-$month-$date";
     //년,월,일 변수 지정.
@@ -8,7 +9,27 @@
     $start_day=date('w',$timestamp);
     $total_day=date('t',$timestamp);
     $total_week=ceil(($total_day+$start_day)/7);
-   
+    $conn=mysqli_connect(
+        "localhost",
+        "root", 
+        "***********",
+        "opentutorials");
+    $sql="SELECT * FROM diary";
+    $result=mysqli_query($conn,$sql);
+
+    $list='';
+    $diary_date="$year-$month-$date"; 
+    $sql="SELECT to_do FROM diary WHERE diary_date='$diary_date'";
+    $result=mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result)>0){
+        while($row=mysqli_fetch_array($result)){
+            $escaped_to_do=htmlspecialchars($row['to_do']);
+            $list=$list."<li>{$escaped_to_do}</li>";
+        }
+    }
+    
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +50,9 @@
             <nav>
                 <ul>
                     <li><a href="Annual.php">Annual</a></li>
-                    <li class="on"><a href="Monthly.php?year=<?php echo $year;?>&month=<?php echo $month;?>">Monthly</a></li>
+                    <li class="on"><a href="Monthly.php?year=<?php echo $year;?>&month=<?php echo sprintf("%02d",$month);?>">Monthly</a></li>
                     <li><a href="Weekly.php">Weekly</a></li>
-                    <li><a href="Daily.php?year=<?php echo $year?>&month=<?php echo $month?>&date=<?php echo $date?>">Daily</a></li>
+                    <li><a href="Daily.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month);?>&date=<?php echo sprintf("%02d",$date)?>">Daily</a></li>
                     
                 </ul>
             </nav>
@@ -44,16 +65,16 @@
                     <a href="Monthly.php?year=<?php echo $year-1?>&month=12">Prev</a>
         
                 <?php else: ?>
-                    <a href="Monthly.php?year=<?php echo $year?>&month=<?php echo $month-1?>">Prev</a>
+                    <a href="Monthly.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month-1);?>">Prev</a>
                 <?php endif ?>
                 
                 <?php if($month==12): ?>
                     <a href="Monthly.php?year=<?php echo $year+1?>&month=1">Next</a>
                 <?php else: ?>
-                    <a href="Monthly.php?year=<?php echo $year?>&month=<?php echo $month+1?>">Next</a>
+                    <a href="Monthly.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month+1);?>">Next</a>
                 <?php endif ?>
 
-                <a href="Monthly.php?year=<?php echo date("Y")?>&month=<?php echo date("m")?>">Today</a>
+                <a href="Monthly.php?year=<?php echo date("Y")?>&month=<?php echo sprintf("%02d",date("m"))?>">Today</a>
                 </div>
 
                 <table id="calendar">
@@ -72,33 +93,70 @@
                     <tr>
                         <?php for($k=0; $k<7; $k++): ?>
                             <?php if($k%7==0): ?>
-
                                 <td class="Day Sunday">
                                     <?php if(($n>1||$k>=$start_day) && ($total_day>=$n)): ?>
-                                        <a href="Daily.php?year=<?php echo $year?>&month=<?php echo $month?>&date=<?php echo $n?>"><?php echo $n++ ?></a>
+                                        <a href="Daily.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month);?>&date=<?php echo sprintf("%02d",$n)?>"><?php echo $n?></a>
+                                        <?php 
+                                            $date_selected=sprintf("%02d",$n);
+                                            $count_record="SELECT * FROM diary WHERE diary_date='$year-$month-$date_selected'";
+                                            $result_cnt=mysqli_query($conn,$count_record);
+                                            $count=mysqli_num_rows($result_cnt);
+                                        ?>
+                                        <?php if($count>0): echo "<div id=\"heart\"><p><a href=\"Monthly.php?year=$year&month=$month&date=$date_selected\">$count</a></p></div>"?>
+                                        <?php endif ?>
+                                        <?php $n++;?>
                                     <?php endif ?>
                                 </td>
                             <?php elseif($k%7==6): ?>
                                 <td class="Day Saturday">
                                 <?php if(($n>1||$k>=$start_day) && ($total_day>=$n)): ?>
-                                    <a href="Daily.php?year=<?php echo $year?>&month=<?php echo $month?>&date=<?php echo $n?>"><?php echo $n++ ?></a>
+                                    <a href="Daily.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month);?>&date=<?php echo sprintf("%02d",$n)?>"><?php echo $n?></a>
+                                    <?php 
+                                            $date_selected=sprintf("%02d",$n);
+                                            $count_record="SELECT * FROM diary WHERE diary_date='$year-$month-$date_selected'";
+                                            $result_cnt=mysqli_query($conn,$count_record);
+                                            $count=mysqli_num_rows($result_cnt);
+                                    ?>
+                                    <?php if($count>0): echo "<div id=\"heart\"><p><a href=\"Monthly.php?year=$year&month=$month&date=$date_selected\">$count</a></p></div>"?>
+                                    <?php endif ?>
+                                    <?php $n++;?>
                                 <?php endif ?>
+                                
                                 </td>
                             <?php else: ?>
                                 <td class="Day">
                                 <?php if(($n>1||$k>=$start_day) && ($total_day>=$n)): ?>
-                                    <a href="Daily.php?year=<?php echo $year?>&month=<?php echo $month?>&date=<?php echo $n?>"><?php echo $n++ ?></a>
+                                    <a href="Daily.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month);?>&date=<?php echo sprintf("%02d",$n)?>"><?php echo $n?></a>
+                                    <?php 
+                                            $date_selected=sprintf("%02d",$n);
+                                            $count_record="SELECT * FROM diary WHERE diary_date='$year-$month-$date_selected'";
+                                            $result_cnt=mysqli_query($conn,$count_record);
+                                            $count=mysqli_num_rows($result_cnt);
+                                    ?>
+                                    <?php if($count>0): echo "<div id=\"heart\"><p><a href=\"Monthly.php?year=$year&month=$month&date=$date_selected\">$count</a></p></div>"?>
+                                    <?php endif ?>
+                                    <?php $n++;?>
                                 <?php endif ?>
+
                                 </td>
                             <?php endif ?>
 
                             <?php endfor; ?>
                             <td class="Week">
-                                <a href="Weekly.php?year=<?php echo $year?>&month=<?php echo $month?>&week=<?php echo $i+1?>">W<?php echo $i+1?></a>
+                                <?php $week=$i+1;?>
+                                <a href="Weekly.php?year=<?php echo $year?>&month=<?php echo sprintf("%02d",$month);?>&week=<?php echo $week?>">W<?php echo $week?></a>
                             </td>
                     </tr>
                 <?php endfor; ?>
                 </table>
+                <div class="show_box">
+                    <div class="to_do_list">
+                        <h3><?php echo "$month/$date To Do List"?></h3>
+                        <ol>
+                            <?php echo $list;?> 
+                        </ol>
+                    </div>
+                </div>
             </div>
         </section>
 

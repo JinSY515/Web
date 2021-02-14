@@ -13,7 +13,7 @@
     $conn=mysqli_connect(
         "localhost",
         "root", 
-        "***********", //비밀번호
+        "***********",
         "opentutorials");
     $sql="SELECT * FROM diary";
     $result=mysqli_query($conn,$sql);
@@ -24,7 +24,7 @@
     if(mysqli_num_rows($result)>0){
         while($row=mysqli_fetch_array($result)){
             $escaped_to_do=htmlspecialchars($row['to_do']);
-            $list=$list."<li>{$escaped_to_do}.........<a href=\"#\">수정</a> <a href=\"#\">완료!</a> <a href=\"#\">삭제</a></li>";
+            $list=$list."<li><a href=\"#\">{$escaped_to_do}</a></li>";
         }
     }
 
@@ -100,10 +100,14 @@
                         
                         <input type="submit" value="추가">
                     </fieldset>
+                </form>
+                <form action="Daily_diary_create.php" method="POST" class="box">
                     <fieldset>
                         <legend>Diary</legend>
-                        <label><textarea placeholder="오늘의 기록"></textarea></label><br>
+                        <label><textarea name="today_record" placeholder="오늘의 기록"></textarea></label><br>
                         <input type="submit" value="기록">
+                        <input type="hidden" name="diary_date" value="<?php echo $diary_date?>">
+
                     </fieldset>
                 </form>
             </div>
