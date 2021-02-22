@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+html,body{height:100%; overflow:hidden;}
 #layout{ width:100%; height:100%; padding-left:180px;}
 
 /*layout*/
@@ -14,7 +18,7 @@
 a { text-decoration:none !important; color:black }
 
 /*container*/
-#container{width:100%; height:100%;}
+#container{position:absolute;width:100%; height:100%;}
 
 /*header*/
 #layout header nav{width:100%; height:100%;}
@@ -31,6 +35,8 @@ a { text-decoration:none !important; color:black }
 
 /*Calendar*/
 table{
+    float:left;
+    
     margin-left:50px;
     border:2px solid #7e7e7e;
     border-collapse:collapse;
@@ -78,6 +84,7 @@ table td.Week{
 }
 
 
+
 .controller{
     font-size:30px;
     margin-left:250px;
@@ -86,9 +93,202 @@ table td.Week{
 .controller a{color:blueviolet;}
 .controller a:hover{color:rgb(255, 0, 179)}
 
+/*Monthly*/
+
+.show_box{
+    display:inline-block;
+    position:absolute;
+    margin-left:30px;
+    width:400px;
+    height:500px;
+    background-image:url("/images/notepad.jpg");
+    background-size:400px 500px;
+}
+
+.show_box ol{
+    margin-left:30px;
+}
+
+.show_box ol li{
+    padding:10px 0 0 0;
+    font-family:Nanum Brush Script;
+    font-size:28px;
+}
+
+.show_box .to_do_list{
+    margin-top:60px;
+    overflow:scroll hidden;
+    overflow-x:hidden;
+}
+.to_do_list h3{
+    text-align:center;
+}
 
 
+.show_box h3{
+    z-index:1;
+}
 
+/*Daily*/
+
+.daily_box{
+    position:relative;
+    float:left;
+    height:100%;
+}
+#input_box{
+    
+    height:83%;
+    display:flex;
+    flex-direction:column;
+}
+#input_box fieldset{
+    display:flex;
+    flex-direction:column;
+    width:40%;
+    height:100%;
+}
+
+#output_box fieldset{
+    height:83%;
+}
+#output_box{
+    width:60%;
+    height:100%;
+}
+
+form.box{
+    position:relative;
+    height:100%;
+}
+
+form.box ol li{
+    font-family:Nanum Pen Script;
+    font-size:32px;
+    font-weight:500;
+}
+
+fieldset{
+    height:40%;
+}
+textarea{
+    height:150px;
+}
+
+#daily_day{
+    font-size:36px;
+    font-family:Lobster;   
+}
+#daily_day a{
+    color:blueviolet;
+}
+#daily_day a:hover{
+    color:rgb(255,0,179);
+}
+
+.delete_btn{
+    vertical-align:middle;
+    width:20px;
+    height:20px;
+    font:18px;
+    color:red;
+    font-weight:700;
+    border-radius:50%;
+    background:white;
+    border:none;
+}
+
+.delete_btn:hover{
+    background:rgb(247, 149, 149);
+}
+
+.check_btn{
+    vertical-align:middle;
+    font-size:28px;
+    font-weight:400;
+    background:white;
+    border:none;
+    font-family:Nanum Pen Script;
+}
+
+.check_btn:hover{
+    background:rgb(188, 255, 205);
+}
+
+.ali{
+    display:inline-block !important;
+}
+/*Weekly*/
+.week_box{
+    width:85%;
+    height:100%;
+    padding:10px;
+    
+}
+
+#week_diary{
+    width:100%;
+    height:100%;
+    margin:0 0 0 0;
+}
+
+#week_diary th{
+    text-align:left;
+    vertical-align:top;
+    font-family:Itim;
+    font-size:24px;
+}
+#container h2{
+    font-size:36px;
+    font-family:Nanum Pen Script;
+    margin:0 0 0 0;
+}
+
+/*Annual*/
+#container ul li{
+    list-style:none;
+}
+#container ul li {
+    font-family:Itim;
+    font-size:32px;
+    margin:15px 0 0 0;
+}
+#container ul li a:hover{
+    color:rgb(247, 149, 149);
+}
+
+/*Heart*/
+
+#heart {
+    position: relative;
+    width: 30px;
+    height: 27px;
+  }
+  #heart:before,
+  #heart:after {
+    position: absolute;
+    content: "";
+    left: 15px;
+    top: 0;
+    width: 15px;
+    height: 24px;
+    background: pink;
+    border-radius: 15px 15px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  #heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+  #heart p{
+      z-index:1;
+      position:relative;
+      text-align:center;
+      font-family:Itim;
+      font-weight:600;
+  }
 /*footer*/
 footer{width:180px; position:fixed; left:0px; bottom:0px; padding: 0 20px 30px 10px;
     font-size:10px; color:#7e6678; z-index:12;}
