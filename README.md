@@ -58,6 +58,13 @@ html, css, javascript, php, MySQL 등 천천히 만들어보는 1인 프로젝�
         <td>jQuery + php 페이지 이동 기능</td>
         <td>O</td>
     </tr>
+    <tr>
+        <td>Annual.php</td>
+        <td>페이지 꾸미기</td>
+        <td>Annual 페이지 꾸미기</td>
+        <td>CSS</td>
+        <td>X(아이디어 조합중)</td>
+    </tr>
 </table>
 <hr>
 <h5>Monthly 페이지</h5>
@@ -125,7 +132,40 @@ html, css, javascript, php, MySQL 등 천천히 만들어보는 1인 프로젝�
         <td>php 페이지 이동</td>
         <td>O</td>
     </tr>
-</table> 
+</table>
+<hr>
+<h5>Weekly 페이지(고민 중)</h5> 
+<table>
+    <tr>
+        <th>구분</th>
+        <th>핵심 기능</th>
+        <th>세부 기능</th>
+        <th>비고</th>
+        <th>구현 여부</th>
+    </tr>
+    <tr>
+        <td>Weekly.php</td>
+        <td>페이지 이동</td>
+        <td>이전/다음/이번 주 이동</td>
+        <td>php 페이지 이동</td>
+        <td>X</td>
+    </tr>
+    <tr>
+        <td>Weekly.php</td>
+        <td>일주일 표현</td>
+        <td>요일별 칸 만들기</td>
+        <td></td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Weekly.php</td>
+        <td>MySQL 연동</td>
+        <td>주의 요일별 다이어리 불러오기</td>
+        <td>sql</td>
+        <td>X</td>
+    </tr>
+</table>
+
 <hr>
 <h5>Daily 페이지</h5>
 <table>
@@ -221,7 +261,12 @@ html, css, javascript, php, MySQL 등 천천히 만들어보는 1인 프로젝�
         <td></td>
         <td>X</td>
     </tr>
-    
-    
+    <tr>
+        <td>Daily.php</td>
+        <td>다이어리 입력</td>
+        <td>짧은 일기 입력 및 저장</td>
+        <td>MySQL에 또다른 데이터베이스 칸 만들어야 함</td>
+        <td>X</td>
+    </tr>
     
 </table>
