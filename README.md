@@ -118,5 +118,110 @@ html, css, javascript, php, MySQL 등 천천히 만들어보는 1인 프로젝�
         <td>li 기능 + MySQL 연동 + MySQL 날짜 기준으로 할 일 불러오기</td>
         <td>O</td>
     </tr>
-
-</table>   
+    <tr>
+        <td>Monthly.php</td>
+        <td>페이지 이동</td>
+        <td>각 Week로 이동</td>
+        <td>php 페이지 이동</td>
+        <td>O</td>
+    </tr>
+</table> 
+<hr>
+<h5>Daily 페이지</h5>
+<table>
+    <tr>
+        <th>구분</th>
+        <th>핵심 기능</th>
+        <th>세부 기능</th>
+        <th>비고</th>
+        <th>구현 여부</th>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>날짜 표현_prev 버튼</td>
+        <td>이전 날로 이동</td>
+        <td></td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>날짜 표현_next 버튼</td>
+        <td>다음 날로 이동</td>
+        <td></td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>날짜 표현_today 버튼</td>
+        <td>오늘로 이동</td>
+        <td></td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>MySQL 연동</td>
+        <td>To do list를 저장할 데이터베이스</td>
+        <td>id(INT), to_do(varchar), diary_date(yyyy-mm-dd), finish_flag(0/1)</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>To do list 저장</td>
+        <td>To do list의 날짜, 할 일, 이전 페이지 주소, 완료 여부 전달</td>
+        <td>form method="POST"로 전달</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily_create.php</td>
+        <td>To do list 저장</td>
+        <td>To do list의 날짜, 할 일, 이전 페이지 주소, 완료 여부 전달받아 데이터베이스에 저장</td>
+        <td>sql INSERT INTO 기능, 안전성을 위해 filter해서 저장<br>
+            이전 페이지 주소는 별도의 페이지로 넘어가지 않고 header로 지정하기 위함</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>저장된 To do list 목록 보기</td>
+        <td>오늘의 To do list MySQL에서 불러와서 나열</td>
+        <td>diary_date로 불러오기</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>To do list 삭제</td>
+        <td>삭제할 To do list의 id, 이전 페이지 주소 전달</td>
+        <td>form method="POST"로 전달</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily_delete.php</td>
+        <td>To do list 삭제</td>
+        <td>삭제할 To do list의 id 전달받아 삭제</td>
+        <td>sql DELETE FROM 기능<br>이전 페이지 주소는 별도의 페이지로 넘어가지 않고 header로 지정하기 위함</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>To do list 완료 체크</td>
+        <td>리스트에 있는 할 일 목록에 hover하면 색 변화<br>클릭 시 완료한 할 일의 finish_flag를 0에서 1로 바꿈</td>
+        <td></td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily_finish.php</td>
+        <td>To do list 완료 체크</td>
+        <td>체크할 할 일의 id를 전달받아 finish_flag 업데이트</td>
+        <td>sql UPDATE 기능</td>
+        <td>O</td>
+    </tr>
+    <tr>
+        <td>Daily.php</td>
+        <td>To do list 완료 체크 표시</td>
+        <td>끝낸 할 일 시각적으로 표시</td>
+        <td></td>
+        <td>X</td>
+    </tr>
+    
+    
+    
+</table>
